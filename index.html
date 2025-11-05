@@ -1,1 +1,69 @@
-!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo Application</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .add-task-container {
+            background-color: #000000;
+            padding: 20px 20px;
+            position: fixed;
+            bottom: 0; 
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .task-input {
+            font-size: 20px;
+            margin: 0 10px;
+        }
+
+        .priority-select {
+            font-size: 20px;
+            margin: 0 10px;
+        }
+
+        .btn-add {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            margin: 0 10px;
+        }
+
+        .app-heading {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 36px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="app-heading">ToDo App</h1>
+    <div class="add-task-container">
+        <input type="text" id="task" class="task-input">
+
+    <select id="priority" class="priority-select">
+         <option value="high">High</option>
+         <option value="medium">Medium</option>
+         <option value="low">Low</option>
+    </select>
+
+    <button onclick="addTask()" class="btn-add">Add Task</button>
+    </div>
+    
+
+</body>
+</html>
