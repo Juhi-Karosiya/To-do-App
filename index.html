@@ -48,6 +48,65 @@
             margin-top: 20px;
             font-size: 36px;
         }
+
+        .task-card {
+            border: 1px solid #000;
+            padding: 10px;
+            margin: 10px;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .task-card-title {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .task-card-priority {
+            position: absolute;
+            top: 10px;
+            right: 40px;
+            background-color: #ff0000;
+            width: 80px;
+        }
+
+        .bin-icon {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .add-task-container {
+                flex-direction: column;
+                padding: 10px;
+                align-items: center;
+                justify-content: center;
+            }    
+            
+            .task-input {
+                font-size: 16px;
+                margin-bottom: 20px;
+                width: 300px;
+            }
+
+            .btn-add{
+                font-size: 16px;
+                padding: 5px 10px;
+                margin-bottom: 20px;
+                width: 300px;
+            }
+
+            .priority-select {
+                font-size: 16px;
+                margin-bottom: 20px;
+                width: 300px;
+                padding: 2px 4px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -63,7 +122,58 @@
 
     <button onclick="addTask()" class="btn-add">Add Task</button>
     </div>
-    
+     
+    <script>
+        let task = []
+        function addTask() {
+            const inputTaskElement = document.getElementById('task');
+            const inputPriorityElemet = document.getElementById('priority');
+            const newTask = {
+                task: inputTaskElement.value,
+                priority: inputPriorityElemet.value || 'medium'
+            };
+
+            tasks.unshift(newTask);
+
+           localStorage.setItem('tasks', JSON.stringify(tasks));
+           
+            renderTodoList(newTask);
+
+        }
+        
+        const savedTasks = localStorage.getItem('tasks');
+
+        if (savedTasks) {
+             tasks = JSON.parse(savedTasks);
+        } 
+
+        function renderTodoList() {
+            const todoListElement = document.getElementById('todo-list');
+
+            todoListElement.innerHTML = '';
+
+            for (let i = 0; i < tasks.length; i++) {
+                const taskObj = taskList[i];
+             
+                todolistElement.innerHTML += `
+                    <div class="task-card">
+                        <h3 class="task-card-title">${taskObj.task}</h3>
+                        <span class="task-priority">${taskObj.priority}</span>
+                        <img src="./img/trash" onclick="removeTask(${i})" class="bin-icon" />
+                    </div>
+                `;
+            }
+        }
+
+        function removeTask(index) {
+            tasks.splice(index, 1);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            renderTodoList(tasks);
+        }   
+
+           
+    </script>
+
 
 </body>
 </html>
