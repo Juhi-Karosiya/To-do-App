@@ -124,13 +124,14 @@
     </div>
      
     <script>
-        let task = []
+        let tasks = []
         function addTask() {
             const inputTaskElement = document.getElementById('task');
             const inputPriorityElemet = document.getElementById('priority');
+
             const newTask = {
                 task: inputTaskElement.value,
-                priority: inputPriorityElemet.value || 'medium'
+                priority: inputPriorityElemet.value || 'medium' 
             };
 
             tasks.unshift(newTask);
@@ -147,7 +148,7 @@
              tasks = JSON.parse(savedTasks);
         } 
 
-        function renderTodoList() {
+        function renderTodoList(taskList) {
             const todoListElement = document.getElementById('todo-list');
 
             todoListElement.innerHTML = '';
@@ -165,8 +166,8 @@
             }
         }
 
-        function removeTask(index) {
-            tasks.splice(index, 1);
+        function removeTask(taskindex) {
+            tasks.splice(taskindex, 1);
             localStorage.setItem('tasks', JSON.stringify(tasks));
             renderTodoList(tasks);
         }   
