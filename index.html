@@ -152,12 +152,12 @@
         function renderTodoList(taskList) {
             const todoListElement = document.getElementById('todo-list');
 
-            todoListElement.innerHTML += '';
+            todoListElement.innerHTML = '';
 
             for (let i = 0; i < taskList.length; i++) {
                 const taskObj = taskList[i];
              
-                todolistElement.innerHTML += `
+                todoListElement.innerHTML += `
                     <div class="task-card">
                         <h3 class="task-card-title">${taskObj.task}</h3>
                         <span class="task-card-priority">${taskObj.priority}</span>
