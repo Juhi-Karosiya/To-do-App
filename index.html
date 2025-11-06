@@ -9,6 +9,7 @@
             margin: 0;
             padding: 0;
             background-color:  #FFE1AF;
+            color: #957C62;
         }
 
         .add-task-container {
@@ -51,8 +52,12 @@
 
         .task-card {
             border: 1px solid #000;
+            width: 80%;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
             padding: 10px;
-            margin: 10px;
+            margin: 10px auto;
             position: relative;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -65,6 +70,10 @@
 
         .task-card-priority {
             position: absolute;
+            padding: 5px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
             top: 10px;
             right: 40px;
             background-color:#b77466;
@@ -94,6 +103,7 @@
             }
 
             .btn-add{
+                border-radius: 10px;
                 font-size: 16px;
                 padding: 5px 10px;
                 margin-bottom: 20px;
