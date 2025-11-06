@@ -119,26 +119,27 @@
          <option value="medium">Medium</option>
          <option value="low">Low</option>
     </select>
-
+    
     <button onclick="addTask()" class="btn-add">Add Task</button>
     </div>
      
     <script>
-        let tasks = []
+        let tasks = [];
+
         function addTask() {
             const inputTaskElement = document.getElementById('task');
             const inputPriorityElemet = document.getElementById('priority');
 
             const newTask = {
                 task: inputTaskElement.value,
-                priority: inputPriorityElemet.value || 'medium' 
+                priority: inputPriorityElemet.value || 'medium', 
             };
 
             tasks.unshift(newTask);
 
            localStorage.setItem('tasks', JSON.stringify(tasks));
            
-            renderTodoList(newTask);
+            renderTodoList(tasks);
 
         }
         
@@ -153,24 +154,26 @@
 
             todoListElement.innerHTML += '';
 
-            for (let i = 0; i < tasks.length; i++) {
+            for (let i = 0; i < taskList.length; i++) {
                 const taskObj = taskList[i];
              
                 todolistElement.innerHTML += `
                     <div class="task-card">
                         <h3 class="task-card-title">${taskObj.task}</h3>
-                        <span class="task-priority">${taskObj.priority}</span>
+                        <span class="task-card-priority">${taskObj.priority}</span>
                         <img src="./img/trash.png" onclick="removeTask(${i})" class="bin-icon" />
                     </div>
                 `;
             }
         }
 
-        function removeTask(taskindex) {
-            tasks.splice(taskindex, 1);
+        function removeTask(taskIndex) {
+            tasks.splice(taskIndex, 1);
             localStorage.setItem('tasks', JSON.stringify(tasks));
             renderTodoList(tasks);
         }   
+
+         renderTodoList(tasks);
 
            
     </script>
